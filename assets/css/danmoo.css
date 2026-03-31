@@ -362,14 +362,11 @@ button.danmoo-btn {
     margin-left: auto;
 }
 
-/* Feed Footer */
-.danmoo-feed-footer {
-    text-align: center;
+/* Infinite scroll sentinel */
+.danmoo-feed-sentinel {
+    display: flex;
+    justify-content: center;
     padding: 1.5rem 0;
-}
-
-.danmoo-load-more {
-    min-width: 200px;
 }
 
 /* Feed Empty */

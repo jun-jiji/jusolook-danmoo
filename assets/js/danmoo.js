@@ -66,15 +66,17 @@
         constructor(container) {
             this.el = container;
             this.grid = $('.danmoo-feed-grid', this.el);
-            this.footer = $('.danmoo-feed-footer', this.el);
+            this.sentinel = $('.danmoo-feed-sentinel', this.el);
             this.empty = $('.danmoo-feed-empty', this.el);
             this.perPage = parseInt(this.el.dataset.perPage) || 12;
             this.page = 1;
             this.sort = 'latest';
             this.category = '';
             this.totalPages = 1;
+            this.isLoading = false;
 
             this.initSortTabs();
+            this.initInfiniteScroll();
             this.loadCategories();
             this.loadPosts();
         }
@@ -89,11 +91,17 @@
                     this.loadPosts(true);
                 });
             });
+        }
 
-            const loadMore = $('.danmoo-load-more', this.el);
-            if (loadMore) {
-                loadMore.addEventListener('click', () => this.loadMore());
-            }
+        initInfiniteScroll() {
+            if (!this.sentinel) return;
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !this.isLoading && this.page < this.totalPages) {
+                    this.page++;
+                    this.loadPosts(false);
+                }
+            }, { rootMargin: '200px' });
+            observer.observe(this.sentinel);
         }
 
         async loadCategories() {
@@ -135,6 +143,9 @@
         }
 
         async loadPosts(reset = false) {
+            if (this.isLoading) return;
+            this.isLoading = true;
+
             if (reset) {
                 this.grid.innerHTML = '';
             }
@@ -150,11 +161,12 @@
                 const data = await api('posts?' + params.toString());
                 this.totalPages = data.total_pages;
 
-                this.grid.innerHTML = '';
+                if (reset) this.grid.innerHTML = '';
 
                 if (data.posts.length === 0 && this.page === 1) {
                     this.empty.style.display = 'block';
-                    this.footer.style.display = 'none';
+                    this.sentinel.style.display = 'none';
+                    this.isLoading = false;
                     return;
                 }
 
@@ -164,15 +176,14 @@
                     this.grid.appendChild(this.renderCard(post));
                 });
 
-                this.footer.style.display = this.page < this.totalPages ? 'block' : 'none';
+                this.sentinel.style.display = this.page < this.totalPages ? 'flex' : 'none';
             } catch (err) {
-                this.grid.innerHTML = '<p style="text-align:center;color:var(--juso-fg-muted);">로딩에 실패했습니다.</p>';
+                if (this.page === 1) {
+                    this.grid.innerHTML = '<p style="text-align:center;color:var(--juso-fg-muted);">로딩에 실패했습니다.</p>';
+                }
             }
-        }
 
-        loadMore() {
-            this.page++;
-            this.loadPosts(false);
+            this.isLoading = false;
         }
 
         renderCard(post) {

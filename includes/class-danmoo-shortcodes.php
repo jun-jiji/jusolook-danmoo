@@ -44,9 +44,9 @@ class Danmoo_Shortcodes {
             <!-- Posts Grid -->
             <div class="danmoo-feed-grid"></div>
 
-            <!-- Load More -->
-            <div class="danmoo-feed-footer" style="display:none;">
-                <button class="danmoo-btn danmoo-btn-outline danmoo-load-more">더 보기</button>
+            <!-- Infinite scroll sentinel -->
+            <div class="danmoo-feed-sentinel" style="display:none;">
+                <div class="danmoo-spinner"></div>
             </div>
 
             <!-- Empty State -->
