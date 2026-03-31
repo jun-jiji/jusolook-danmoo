@@ -223,7 +223,8 @@
         constructor(container) {
             this.el = container;
             this.form = container;
-            this.success = $('.danmoo-submit-success', this.el.parentElement);
+            this.wrapper = container.parentElement;
+            this.success = $('.danmoo-submit-success', this.wrapper);
             this.loadCategories();
             this.initEvents();
         }
@@ -276,14 +277,25 @@
             });
 
             // Copy URL
-            const copyBtn = $('.danmoo-copy-btn', this.el.parentElement);
+            const copyBtn = $('.danmoo-copy-btn', this.wrapper);
             if (copyBtn) {
                 copyBtn.addEventListener('click', () => {
-                    const input = $('.danmoo-url-input', this.el.parentElement);
+                    const input = $('.danmoo-url-input', this.wrapper);
                     navigator.clipboard.writeText(input.value).then(() => {
                         copyBtn.textContent = '복사됨!';
                         setTimeout(() => { copyBtn.textContent = '복사'; }, 2000);
                     });
+                });
+            }
+
+            // Write again
+            const writeAgain = $('.danmoo-write-again-btn', this.wrapper);
+            if (writeAgain) {
+                writeAgain.addEventListener('click', () => {
+                    this.success.style.display = 'none';
+                    this.el.style.display = '';
+                    this.el.reset();
+                    $('.danmoo-char-count', this.el).textContent = '0/5000';
                 });
             }
         }
@@ -316,11 +328,10 @@
 
                 // Show success
                 this.el.style.display = 'none';
-                this.success.style.display = 'block';
-                const urlInput = $('.danmoo-url-input', this.success);
-                urlInput.value = data.url;
-                const viewBtn = $('.danmoo-view-post-btn', this.success);
-                viewBtn.href = data.url;
+                this.success.style.display = '';
+                $('.danmoo-url-input', this.success).value = data.url;
+                $('.danmoo-view-post-btn', this.success).href = data.url;
+                this.success.scrollIntoView({ behavior: 'smooth', block: 'start' });
             } catch (err) {
                 alert(err.message);
                 submitBtn.disabled = false;

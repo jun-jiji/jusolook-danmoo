@@ -104,19 +104,24 @@ class Danmoo_Shortcodes {
                 <div class="danmoo-form-actions">
                     <button type="submit" class="danmoo-btn danmoo-btn-primary danmoo-btn-lg">등록하기</button>
                 </div>
-
-                <!-- Success message (hidden by default) -->
-                <div class="danmoo-submit-success" style="display:none;">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--juso-success, #22c55e)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    <h3>글이 등록되었습니다!</h3>
-                    <p>아래 링크를 저장하면 나중에 글을 찾을 수 있습니다:</p>
-                    <div class="danmoo-url-copy">
-                        <input type="text" class="danmoo-url-input" readonly>
-                        <button type="button" class="danmoo-btn danmoo-copy-btn">복사</button>
-                    </div>
-                    <a href="#" class="danmoo-btn danmoo-btn-outline danmoo-view-post-btn">글 보러가기</a>
-                </div>
             </form>
+
+            <!-- Success message (hidden by default, outside form) -->
+            <div class="danmoo-submit-success" style="display:none;">
+                <div class="danmoo-success-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--juso-success, #22c55e)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <h3>글이 등록되었습니다!</h3>
+                <p class="danmoo-success-notice">이 링크를 저장해야 나중에 글을 찾을 수 있습니다</p>
+                <div class="danmoo-url-copy">
+                    <input type="text" class="danmoo-url-input" readonly>
+                    <button type="button" class="danmoo-btn danmoo-copy-btn">복사</button>
+                </div>
+                <div class="danmoo-success-actions">
+                    <a href="#" class="danmoo-btn danmoo-btn-primary danmoo-view-post-btn">글 보러가기</a>
+                    <button type="button" class="danmoo-btn danmoo-btn-outline danmoo-write-again-btn">새 글 쓰기</button>
+                </div>
+            </div>
         </div>
         <?php
         return ob_get_clean();
