@@ -1,0 +1,1034 @@
+/**
+ * Juso-Danmoo (대나무숲) - Frontend Styles
+ * Matches jusolook-directory design system exactly
+ */
+
+/* ========================================
+   Base
+   ======================================== */
+
+html:has(.danmoo-feed),
+html:has(.danmoo-detail),
+html:has(.danmoo-submit-wrapper),
+html:has(.danmoo-rules),
+body:has(.danmoo-feed),
+body:has(.danmoo-detail),
+body:has(.danmoo-submit-wrapper),
+body:has(.danmoo-rules) {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+}
+
+.danmoo-feed,
+.danmoo-detail,
+.danmoo-submit-wrapper,
+.danmoo-rules {
+    font-family: var(--juso-font, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif);
+    color: var(--juso-fg, #09090b);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.danmoo-detail,
+.danmoo-submit-wrapper,
+.danmoo-rules {
+    max-width: 720px;
+    padding: 0 1rem;
+}
+
+.danmoo-feed *,
+.danmoo-detail *,
+.danmoo-submit-wrapper *,
+.danmoo-rules * {
+    box-sizing: border-box;
+}
+
+/* ========================================
+   Typography
+   ======================================== */
+
+.danmoo-text-muted {
+    color: var(--juso-fg-muted, #71717a);
+    font-size: 0.875rem;
+}
+
+.danmoo-required {
+    color: var(--juso-danger, #ef4444);
+}
+
+/* ========================================
+   Buttons — matches .juso-btn exactly
+   ======================================== */
+
+.danmoo-btn,
+.danmoo-btn[type="button"],
+.danmoo-btn[type="submit"],
+button.danmoo-btn {
+    border: none !important;
+}
+
+.danmoo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: inherit;
+    border: none;
+    border-radius: var(--juso-radius, 0.5rem);
+    background: var(--juso-bg-muted, #f4f4f5);
+    color: var(--juso-fg, #09090b);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.danmoo-btn:hover {
+    background: var(--juso-bg-subtle, #fafafa);
+}
+
+.danmoo-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(24 24 27 / 0.1);
+}
+
+.danmoo-btn-primary {
+    background: var(--juso-primary, #18181b);
+    color: var(--juso-primary-fg, #fafafa);
+}
+
+.danmoo-btn-primary:hover {
+    background: var(--juso-primary-hover, #27272a);
+}
+
+.danmoo-btn-outline {
+    background: var(--juso-bg-muted, #f4f4f5);
+    color: var(--juso-fg, #09090b);
+}
+
+.danmoo-btn-outline:hover {
+    background: var(--juso-bg-subtle, #fafafa);
+}
+
+.danmoo-btn-danger {
+    background: transparent;
+    color: var(--juso-danger, #ef4444);
+}
+
+.danmoo-btn-danger:hover {
+    background: var(--juso-danger, #ef4444);
+    color: #fff;
+}
+
+.danmoo-btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+}
+
+.danmoo-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   Feed - Toolbar — matches .juso-filter
+   ======================================== */
+
+.danmoo-feed-toolbar {
+    background: var(--juso-bg, #ffffff);
+    border: 1px solid var(--juso-border, #e4e4e7);
+    border-radius: var(--juso-radius-lg, 0.75rem);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    position: sticky;
+    top: 1rem;
+    z-index: 10;
+    box-shadow: var(--juso-shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
+}
+
+.danmoo-sort-tabs {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.danmoo-sort-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+/* Sort tab — matches .juso-tag-chip exactly */
+.danmoo-sort-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.75rem !important;
+    font-weight: 400;
+    font-family: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 9999px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    min-height: 2rem;
+    white-space: nowrap;
+    color: var(--juso-fg-muted, #71717a);
+}
+
+.danmoo-sort-tab span {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.5;
+    vertical-align: middle;
+    font-size: 0.75rem !important;
+}
+
+.danmoo-sort-tab:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+    color: var(--juso-fg, #09090b);
+}
+
+/* Active — matches .juso-tag-chip-active */
+.danmoo-sort-tab.active {
+    background: rgba(16, 185, 129, 0.3);
+    border-color: rgba(16, 185, 129, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2), 0 2px 4px -1px rgba(16, 185, 129, 0.15);
+    color: var(--juso-fg, #09090b);
+    font-weight: 500;
+}
+
+.danmoo-sort-tab.active:hover {
+    background: rgba(16, 185, 129, 0.4);
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 6px 8px -1px rgba(16, 185, 129, 0.25), 0 3px 5px -1px rgba(16, 185, 129, 0.2);
+}
+
+/* Category Filter Chips — same glass style */
+.danmoo-category-filter {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.75rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 0.25rem;
+}
+
+.danmoo-category-filter::-webkit-scrollbar {
+    display: none;
+}
+
+.danmoo-category-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.75rem !important;
+    font-weight: 400;
+    font-family: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 9999px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    min-height: 2rem;
+    white-space: nowrap;
+    color: var(--juso-fg-muted, #71717a);
+}
+
+.danmoo-category-chip:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+    color: var(--juso-fg, #09090b);
+}
+
+.danmoo-category-chip.active {
+    background: rgba(16, 185, 129, 0.3);
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2), 0 2px 4px -1px rgba(16, 185, 129, 0.15);
+    color: var(--juso-fg, #09090b);
+    font-weight: 500;
+}
+
+/* ========================================
+   Feed - Grid & Cards
+   ======================================== */
+
+.danmoo-feed-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.danmoo-card {
+    display: block;
+    padding: 1rem 1.25rem;
+    background: var(--juso-bg, #fff);
+    border: 1px solid var(--juso-border, #e4e4e7);
+    border-radius: var(--juso-radius-lg, 0.75rem);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--juso-shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
+}
+
+.danmoo-card:hover {
+    border-color: var(--juso-border-hover, #d4d4d8);
+    box-shadow: var(--juso-shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
+    transform: translateY(-1px);
+}
+
+.danmoo-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.danmoo-card-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--juso-fg, #09090b);
+    margin: 0;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.danmoo-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    background: var(--juso-accent, #f4f4f5);
+    color: var(--juso-accent-fg, #18181b);
+    white-space: nowrap;
+}
+
+.danmoo-card-excerpt {
+    font-size: 0.8125rem;
+    color: var(--juso-fg-muted, #71717a);
+    line-height: 1.5;
+    margin: 0.25rem 0 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: keep-all;
+}
+
+.danmoo-card-stats {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--juso-fg-muted, #71717a);
+}
+
+.danmoo-card-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.danmoo-card-date {
+    font-size: 0.6875rem;
+    color: var(--juso-fg-subtle, #a1a1aa);
+    margin-left: auto;
+}
+
+/* Feed Footer */
+.danmoo-feed-footer {
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.danmoo-load-more {
+    min-width: 200px;
+}
+
+/* Feed Empty */
+.danmoo-feed-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--juso-fg-muted, #71717a);
+}
+
+.danmoo-feed-empty svg {
+    margin-bottom: 1rem;
+    opacity: 0.4;
+}
+
+.danmoo-feed-empty p {
+    margin: 0.25rem 0;
+    font-size: 0.875rem;
+}
+
+/* Loading */
+.danmoo-feed-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    color: var(--juso-fg-muted, #71717a);
+    font-size: 0.875rem;
+}
+
+.danmoo-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--juso-border, #e4e4e7);
+    border-top-color: var(--juso-primary, #18181b);
+    border-radius: 50%;
+    animation: danmoo-spin 0.6s linear infinite;
+}
+
+@keyframes danmoo-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   Detail Page — Hide theme page header/title
+   ======================================== */
+
+.single-danmoo_post .page-header,
+.single-danmoo_post .entry-header,
+.single-danmoo_post .entry-title {
+    display: none !important;
+}
+
+/* ========================================
+   Detail Page
+   ======================================== */
+
+.danmoo-detail {
+    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Main content card */
+.danmoo-detail-card {
+    background: var(--juso-bg, #fff);
+    border: 1px solid var(--juso-border, #e4e4e7);
+    border-radius: var(--juso-radius-lg, 0.75rem);
+    padding: 1.5rem;
+    box-shadow: var(--juso-shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
+}
+
+.danmoo-detail-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 0.75rem;
+    color: var(--juso-fg, #09090b);
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.danmoo-detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--juso-fg-muted, #71717a);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--juso-border, #e4e4e7);
+}
+
+.danmoo-detail-content {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.danmoo-detail-content p {
+    margin: 0 0 1rem;
+}
+
+.danmoo-detail-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Comments card */
+.danmoo-comments-card {
+    background: var(--juso-bg-subtle, #fafafa);
+    border: 1px solid var(--juso-border, #e4e4e7);
+    border-radius: var(--juso-radius-lg, 0.75rem);
+    padding: 1.25rem;
+    box-shadow: var(--juso-shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
+}
+
+.danmoo-comments-list:empty::after {
+    content: '아직 댓글이 없습니다.';
+    display: block;
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--juso-fg-subtle, #a1a1aa);
+    font-size: 0.8125rem;
+}
+
+/* Detail Action Buttons — compact chip style */
+.danmoo-detail-actions {
+    display: flex;
+    gap: 0.375rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--juso-border, #e4e4e7);
+    flex-wrap: wrap;
+}
+
+.danmoo-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.3rem 0.625rem;
+    font-size: 0.75rem !important;
+    font-weight: 400;
+    font-family: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 9999px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    color: var(--juso-fg-muted, #71717a);
+    white-space: nowrap;
+}
+
+.danmoo-action-btn:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+    color: var(--juso-fg, #09090b);
+}
+
+.danmoo-action-btn-danger {
+    color: var(--juso-danger, #ef4444);
+}
+
+.danmoo-action-btn-danger:hover {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: var(--juso-danger, #ef4444);
+}
+
+.danmoo-like-btn.liked {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: var(--juso-danger, #ef4444);
+}
+
+.danmoo-like-btn.liked svg {
+    fill: var(--juso-danger, #ef4444);
+}
+
+
+/* ========================================
+   Comments
+   ======================================== */
+
+/* Comment Form */
+.danmoo-comment-form {
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--juso-border, #e4e4e7);
+}
+
+.danmoo-comment-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-family: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--juso-radius, 0.5rem);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--juso-fg, #09090b);
+    resize: vertical;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.danmoo-comment-input:hover {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.danmoo-comment-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(24, 24, 27, 0.3);
+    box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.1), 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.danmoo-comment-input::placeholder {
+    color: var(--juso-fg-subtle, #a1a1aa);
+}
+
+.danmoo-comment-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.danmoo-comment-char-count {
+    font-size: 0.75rem;
+    color: var(--juso-fg-subtle, #a1a1aa);
+}
+
+/* Comment List */
+.danmoo-comments-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.danmoo-comment {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--juso-bg-muted, #f4f4f5);
+}
+
+.danmoo-comment:last-child {
+    border-bottom: none;
+}
+
+.danmoo-comment-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.375rem;
+}
+
+.danmoo-anon-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--juso-fg, #09090b);
+}
+
+.danmoo-anon-label.is-author {
+    color: var(--juso-primary, #18181b);
+    background: var(--juso-accent, #f4f4f5);
+    padding: 0.0625rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+}
+
+.danmoo-comment-date {
+    font-size: 0.6875rem;
+    color: var(--juso-fg-subtle, #a1a1aa);
+}
+
+.danmoo-comment-body {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.danmoo-comment-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.danmoo-comment-actions .danmoo-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    background: transparent;
+    color: var(--juso-fg-muted, #71717a);
+}
+
+.danmoo-comment-actions .danmoo-btn:hover {
+    color: var(--juso-fg, #09090b);
+    background: var(--juso-bg-muted, #f4f4f5);
+}
+
+.danmoo-comment-actions .danmoo-btn.liked {
+    color: var(--juso-danger, #ef4444);
+}
+
+/* ========================================
+   Submit Form — matches .juso-form
+   ======================================== */
+
+.danmoo-submit-wrapper {
+    width: 100%;
+    max-width: 100%;
+}
+
+.danmoo-submit-form {
+    background: var(--juso-bg, #fff);
+    border: 1px solid var(--juso-border, #e4e4e7);
+    border-radius: var(--juso-radius-lg, 0.75rem);
+    overflow: hidden;
+}
+
+.danmoo-submit-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+    padding: 2rem 1.5rem 0;
+}
+
+.danmoo-submit-form > .danmoo-text-muted {
+    padding: 0 1.5rem;
+}
+
+.danmoo-form-group {
+    padding: 0 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.danmoo-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--juso-fg, #09090b);
+}
+
+/* Inputs — glass morphism like .juso-field inputs */
+.danmoo-input,
+.danmoo-select,
+.danmoo-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-family: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--juso-radius, 0.5rem);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--juso-fg, #09090b);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.danmoo-input:hover,
+.danmoo-select:hover,
+.danmoo-textarea:hover {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.danmoo-input:focus,
+.danmoo-select:focus,
+.danmoo-textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(24, 24, 27, 0.3);
+    box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.1), 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.danmoo-input::placeholder,
+.danmoo-textarea::placeholder {
+    color: var(--juso-fg-subtle, #a1a1aa);
+}
+
+.danmoo-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.danmoo-char-count {
+    display: block;
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--juso-fg-subtle, #a1a1aa);
+    margin-top: 0.25rem;
+}
+
+/* Rules Agreement */
+.danmoo-rules-agree {
+    padding: 1rem;
+    background: var(--juso-bg-subtle, #fafafa);
+    border-radius: var(--juso-radius, 0.5rem);
+    border: 1px solid var(--juso-border, #e4e4e7);
+}
+
+.danmoo-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.danmoo-checkbox-label input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--juso-primary, #18181b);
+}
+
+.danmoo-rules-toggle {
+    font-size: 0.8125rem;
+    color: var(--juso-fg-muted, #71717a);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 0.5rem;
+    font-family: inherit;
+}
+
+.danmoo-rules-preview {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    background: var(--juso-bg, #fff);
+    border-radius: var(--juso-radius-sm, 0.375rem);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--juso-fg-muted, #71717a);
+    white-space: pre-wrap;
+    word-break: keep-all;
+}
+
+.danmoo-rules-preview pre {
+    margin: 0;
+    white-space: pre-wrap;
+    font-family: inherit;
+}
+
+/* Form Actions — matches .juso-form-actions */
+.danmoo-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1.5rem;
+    background: var(--juso-bg-subtle, #fafafa);
+    margin-top: 1.5rem;
+    border: none;
+}
+
+.danmoo-form-actions .danmoo-btn-lg {
+    width: 100%;
+}
+
+/* Submit Success */
+.danmoo-submit-success {
+    text-align: center;
+    padding: 2rem 1.5rem;
+}
+
+.danmoo-submit-success h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+}
+
+.danmoo-submit-success p {
+    color: var(--juso-fg-muted, #71717a);
+    font-size: 0.875rem;
+    margin: 0 0 1rem;
+}
+
+.danmoo-url-copy {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.danmoo-url-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-family: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--juso-radius, 0.5rem);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--juso-fg, #09090b);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+   Rules Page
+   ======================================== */
+
+.danmoo-rules {
+    max-width: 600px;
+}
+
+.danmoo-rules-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+}
+
+.danmoo-rules-content {
+    padding: 1.5rem;
+    background: var(--juso-bg-subtle, #fafafa);
+    border: 1px solid var(--juso-border, #e4e4e7);
+    border-radius: var(--juso-radius-lg, 0.75rem);
+    line-height: 1.8;
+    font-size: 0.875rem;
+    word-break: keep-all;
+}
+
+/* ========================================
+   Modal
+   ======================================== */
+
+.danmoo-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.danmoo-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.danmoo-modal-content {
+    position: relative;
+    background: var(--juso-bg, #fff);
+    border-radius: var(--juso-radius-lg, 0.75rem);
+    padding: 1.5rem;
+    max-width: 400px;
+    width: calc(100% - 2rem);
+    box-shadow: var(--juso-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
+}
+
+.danmoo-modal-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+}
+
+.danmoo-report-reasons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.danmoo-report-reason {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.875rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--juso-radius, 0.5rem);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-family: inherit;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.danmoo-report-reason:hover {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.danmoo-report-reason.selected {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.5);
+}
+
+.danmoo-report-reason input[type="radio"] {
+    accent-color: var(--juso-primary, #18181b);
+}
+
+.danmoo-modal-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 640px) {
+    .danmoo-feed {
+        padding: 0 0.5rem;
+    }
+
+    .danmoo-detail,
+    .danmoo-submit-wrapper,
+    .danmoo-rules {
+        padding: 0 0.75rem;
+    }
+
+    .danmoo-feed-toolbar {
+        padding: 1rem;
+        border-radius: var(--juso-radius, 0.5rem);
+    }
+
+    .danmoo-detail-title {
+        font-size: 1.25rem;
+    }
+
+    .danmoo-form-group {
+        padding: 0 1rem;
+    }
+
+    .danmoo-submit-title {
+        padding: 1.5rem 1rem 0;
+    }
+
+    .danmoo-form-actions {
+        padding: 1.5rem 1rem;
+    }
+
+    .danmoo-submit-success {
+        padding: 1.5rem 1rem;
+    }
+}
