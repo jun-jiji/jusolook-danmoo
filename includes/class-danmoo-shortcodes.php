@@ -42,12 +42,7 @@ class Danmoo_Shortcodes {
             </div>
 
             <!-- Posts Grid -->
-            <div class="danmoo-feed-grid">
-                <div class="danmoo-feed-loading">
-                    <div class="danmoo-spinner"></div>
-                    <span>로딩 중...</span>
-                </div>
-            </div>
+            <div class="danmoo-feed-grid"></div>
 
             <!-- Load More -->
             <div class="danmoo-feed-footer" style="display:none;">

@@ -68,7 +68,6 @@
             this.grid = $('.danmoo-feed-grid', this.el);
             this.footer = $('.danmoo-feed-footer', this.el);
             this.empty = $('.danmoo-feed-empty', this.el);
-            this.loading = $('.danmoo-feed-loading', this.el);
             this.perPage = parseInt(this.el.dataset.perPage) || 12;
             this.page = 1;
             this.sort = 'latest';
@@ -138,8 +137,6 @@
         async loadPosts(reset = false) {
             if (reset) {
                 this.grid.innerHTML = '';
-                this.loading.style.display = 'flex';
-                this.grid.appendChild(this.loading);
             }
 
             try {
@@ -153,7 +150,7 @@
                 const data = await api('posts?' + params.toString());
                 this.totalPages = data.total_pages;
 
-                if (reset) this.grid.innerHTML = '';
+                this.grid.innerHTML = '';
 
                 if (data.posts.length === 0 && this.page === 1) {
                     this.empty.style.display = 'block';
