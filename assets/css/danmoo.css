@@ -100,12 +100,20 @@ button.danmoo-btn {
 }
 
 .danmoo-btn-primary {
-    background: var(--juso-primary, #18181b);
-    color: var(--juso-primary-fg, #fafafa);
+    background: rgba(16, 185, 129, 0.3);
+    border: 1px solid rgba(16, 185, 129, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2), 0 2px 4px -1px rgba(16, 185, 129, 0.15);
+    color: var(--juso-fg, #09090b);
+    font-weight: 500;
 }
 
 .danmoo-btn-primary:hover {
-    background: var(--juso-primary-hover, #27272a);
+    background: rgba(16, 185, 129, 0.4);
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 6px 8px -1px rgba(16, 185, 129, 0.25), 0 3px 5px -1px rgba(16, 185, 129, 0.2);
+    transform: translateY(-1px);
 }
 
 .danmoo-btn-outline {
